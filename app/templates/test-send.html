@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Test Send
+{% endblock title %}
+
+{% block content %}
+<main class="grid place-items-center">
+  <form  
+    class="flex flex-col gap-2 w-[400px]"
+    method="post">
+    {% csrf_token %}
+    <div class="flex flex-col">
+      <label for="sender">Sender</label>
+      <input class="input input-primary w-full" type="text" name="sender">
+    </div>
+    <div class="flex flex-col">
+      <label for="recepiant">Recepiant</label>
+      <input class="input input-primary w-full" type="text" name="recepiant">
+    </div>
+
+
+    <div class="flex flex-col">
+      <label for="message">Message</label>
+      <textarea class="textarea textarea-primary w-full" name="message"></textarea>
+    </div>
+    <button class="btn btn-soft btn-primary" type="submit">Send</button>
+  </form>
+</main>
+{% endblock content %}

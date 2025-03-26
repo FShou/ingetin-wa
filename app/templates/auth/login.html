@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    IngetinWa - Login
+{% endblock title %}
+{% block content %}
+    <main class="flex w-full h-screen p-3 gap-4">
+        <section class="hidden lg:flex lg:basis-1/2 p-3 flex-col justify-end size-full bg-primary/70 rounded-lg text-base-content">
+            <div class="mt-auto">
+                <p class="font-semibold text-lg tracking-tight">Ingetin orang kesayangan otomatis dan gapake ribet</p>
+                <p class="text-sm">by F.Shou</p>
+            </div>
+        </section>
+        <section class="flex justify-center items-center lg:basis-1/2">
+            <div class="-mt-28 w-[400px] space-y-4">
+              <div class="text-center">
+                <h1 >Welcome back to IngetinWA</h1>
+                <p>Please login to continue.</p>
+              </div>
+                <form method="post" class="flex flex-col gap-2 w-full">
+                    {% csrf_token %}
+                    <label for="username" class="input input-primary w-full">
+                        <span class="font-bold text-sm">Username</span>
+                        <input type="text" name="username"  required>
+                    </label>
+                    <label for="password" class="input input-primary w-full">
+                        <span class="font-bold text-sm">Password</span>
+                        <input type="password" name="password" required>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+
+                    {% for message in messages %}
+                    <p class="text-sm text-error">{{message}}</p>
+                    {% endfor %}
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
