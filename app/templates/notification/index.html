@@ -4,64 +4,64 @@
 <h1 class="text-2xl font-bold mb-4">Create Notification</h1>
         <form method="post" class=" p-6 rounded-lg shadow-md">
             {% csrf_token %}
-            {{ form.non_field_errors }}  <!-- Display non-field errors -->
+            {{ form.non_field_errors }}  
 
             <div class="mb-4">
                 <label for="{{ form.recepiant.id_for_label }}" class="label">
                     <span class="label-text">Recipient:</span>
                 </label>
-                {{ form.recepiant }}  <!-- Render the recipient field -->
-                {{ form.recepiant.errors }}  <!-- Display errors for the recipient field -->
+                {{ form.recepiant }}  
+                {{ form.recepiant.errors }} 
             </div>
 
             <div class="mb-4">
                 <label for="{{ form.message.id_for_label }}" class="label">
                     <span class="label-text">Message:</span>
                 </label>
-                {{ form.message }}  <!-- Render the message field -->
-                {{ form.message.errors }}  <!-- Display errors for the message field -->
+                {{ form.message }}  
+                {{ form.message.errors }}  
             </div>
 
             <div class="mb-4">
                 <label for="{{ form.schedule_type.id_for_label }}" class="label">
                     <span class="label-text">Schedule Type:</span>
                 </label>
-                {{ form.schedule_type }}  <!-- Render the schedule type field -->
-                {{ form.schedule_type.errors }}  <!-- Display errors for the schedule type field -->
+                {{ form.schedule_type }}  
+                {{ form.schedule_type.errors }}  
             </div>
 
             <div class="mb-4">
                 <label for="{{ form.time.id_for_label }}" class="label">
                     <span class="label-text">Time:</span>
                 </label>
-                {{ form.time }}  <!-- Render the time field -->
-                {{ form.time.errors }}  <!-- Display errors for the time field -->
+                {{ form.time }}  
+                {{ form.time.errors }} 
             </div>
 
             <div class="mb-4">
                 <label for="{{ form.day_of_week.id_for_label }}" class="label">
                     <span class="label-text">Day of Week:</span>
                 </label>
-                {{ form.day_of_week }}  <!-- Render the day of week field -->
-                {{ form.day_of_week.errors }}  <!-- Display errors for the day of week field -->
+                {{ form.day_of_week }} 
+                {{ form.day_of_week.errors }} 
             </div>
 
             <div class="mb-4">
                 <label for="{{ form.day_of_month.id_for_label }}" class="label">
                     <span class="label-text">Day of Month:</span>
                 </label>
-                {{ form.day_of_month}}  <!-- Render the day of month field -->
-                {{ form.day_of_month.errors }}  <!-- Display errors for the day of month field -->
+                {{ form.day_of_month}} 
+                {{ form.day_of_month.errors }}  
             </div>
 
             <div class="mb-4">
                 <label for="{{ form.exact_datetime.id_for_label }}" class="label">
                     <span class="label-text">Exact Date & Time:</span>
                 </label>
-                {{ form.exact_datetime }}  <!-- Render the exact datetime field -->
-                {{ form.exact_datetime.errors }}  <!-- Display errors for the exact datetime field -->
+                {{ form.exact_datetime }} 
+                {{ form.exact_datetime.errors }} 
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary w-full">Submit</button>
         </form>
 {% endblock content %}

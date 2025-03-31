@@ -10,6 +10,8 @@ class ScheduleType(models.TextChoices):
 
 
 class Notifications(BaseModel):
+    title = models.CharField(max_length=100,null=True,blank=True)
+    description = models.CharField(max_length=255,null=True,blank=True)
     recepiant = models.CharField(max_length=13)
     message = models.TextField(blank=True)
     schedule_type = models.CharField(

@@ -46,9 +46,41 @@
                 </div>
             </section>
             {% if status == "CONNECTED" %}
-                <section>
-                    <h2>Notifications</h2>
-                    {% for notif in notifications %}<p>{{ notif }}</p>{% endfor %}
+                <section class="w-full space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h2>Notifications</h2>
+                        <a href="{% url "notification" %}" class="btn btn-primary">Create New Notification</a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        {% for notif in notifications %}
+                            <div class="card card-sm w-full border-2 border-primary ">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ notif.title }}</h2>
+                                    <p>{{ notif.description }}</p>
+                                    {% if notif.schedule_type == "DA" %}
+                                        <p>Daily</p>
+                                        <p>{{ notif.time }}</p>
+                                    {% endif %}
+                                    {% if notif.schedule_type == "WE" %}
+                                        <p>Weekly</p>
+                                        <p>{{ notif.day_of_week }}</p>
+                                    {% endif %}
+                                    {% if notif.schedule_type == "MO" %}
+                                        <p>Monthly</p>
+                                        <p>{{ notif.day_of_month }}</p>
+                                    {% endif %}
+                                    {% if notif.schedule_type == "EX" %}
+                                        <p>Exact Date</p>
+                                        <p>{{ notif.exact_datetime }}</p>
+                                    {% endif %}
+                                    <div class="card-actions w-full grid grid-cols-2">
+                                        <a href="" class="btn btn-secondary">Edit</a>
+                                        <a href="" class="btn btn-error">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </section>
             {% endif %}
         </div>
