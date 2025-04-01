@@ -1,99 +1,87 @@
-{% extends "base.html" %}
+{% extends "dashboard-base.html" %}
 {% block content %}
-    <main class="space-y-4">
-        <nav class="sticky flex justify-between px-4 py-2 items-center top-0 inset-x-0 bg-primary text-primary-content">
-            <div class="text-xl font-semibold">IngetinWA</div>
-            <div class="">
-                <form method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-error">Log Out</button>
-                </form>
-            </div>
-        </nav>
-        <div class="w-screen flex flex-col items-center px-60 space-y-8">
-            <section class="w-full">
-                <div class="card card-border bg-base-100 w-full">
-                    <div class="flex justify-between items-center">
-                        <div class="card-body">
-                            <div class="card-title">WhatsApp Connection Status</div>
-                            {% if status == "SCAN_QR_CODE" %}
-                                <span class="space-x-2">
-                                    <span class="inline-grid *:[grid-area:1/1]">
-                                        <span class="status status-info animate-ping"></span>
-                                        <span class="status status-info"></span>
-                                    </span>
-                                    Scan QR To Connect your WhatsApp (Refresh to see changes)
-                                </span>
-                            {% endif %}
-                            {% if status == "STARTING" %}
-                                <span class="space-x-2">
-                                    <span class="inline-grid *:[grid-area:1/1]">
-                                        <span class="status status-warning"></span>
-                                    </span>
-                                    Waiting...
-                                </span>
-                            {% endif %}
-                            {% if status == "CONNECTED" %}
-                                <span class="space-x-2">
-                                    <span class="inline-grid *:[grid-area:1/1]">
-                                        <span class="status status-success"></span>
-                                    </span>
-                                    Your WhatsApp is Connected
-                                </span>
-                            {% endif %}
-                        </div>
-                        <div class="px-8" id="qrcode">
-                            {% if status == "CONNECTED" %}
-                                {# <form action=" {% url "disconnect" %}"> #}
-                                {# {% csrf_token %} #}
-                                <button type="submit" class="btn btn-error">Disconnect WhatsApp</button>
-                                {# </form> #}
-                            {% endif %}
-                        </div>
-                    </div>
+    <section class="w-full">
+        <div class="card card-border bg-base-100 w-full">
+            <div class="flex justify-between items-center">
+                <div class="card-body">
+                    <div class="card-title">WhatsApp Connection Status</div>
+                    {% if status == "SCAN_QR_CODE" %}
+                        <span class="space-x-2">
+                            <span class="inline-grid *:[grid-area:1/1]">
+                                <span class="status status-info animate-ping"></span>
+                                <span class="status status-info"></span>
+                            </span>
+                            Scan QR To Connect your WhatsApp (Refresh to see changes)
+                        </span>
+                    {% endif %}
+                    {% if status == "STARTING" %}
+                        <span class="space-x-2">
+                            <span class="inline-grid *:[grid-area:1/1]">
+                                <span class="status status-warning"></span>
+                            </span>
+                            Waiting...
+                        </span>
+                    {% endif %}
+                    {% if status == "CONNECTED" %}
+                        <span class="space-x-2">
+                            <span class="inline-grid *:[grid-area:1/1]">
+                                <span class="status status-success"></span>
+                            </span>
+                            Your WhatsApp is Connected
+                        </span>
+                    {% endif %}
                 </div>
-            </section>
-            {% if status == "CONNECTED" %}
-                <section class="w-full space-y-4">
-                    <div class="flex justify-between items-center">
-                        <h2>Notifications</h2>
-                        <a href="{% url "create-notification" %}" class="btn btn-primary">Create New Notification</a>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2">
-                        {% for notif in notifications %}
-                            <div class="card card-sm w-full border-2 border-primary ">
-                                <div class="relative card-body">
-                                    <h2 class="card-title">{{ notif.title }}</h2>
-                                    <p>{{ notif.description }}</p>
-                                    {% if notif.schedule_type == "DA" %}
-                                        <p>{{ notif.time }}</p>
-                                        <p class="badge badge-primary badge-md absolute top-3 right-3">Daily</p>
-                                    {% endif %}
-                                    {% if notif.schedule_type == "WE" %}
-                                        <p>{{ notif.day_of_week }}</p>
-                                        <p class="badge badge-secondary badge-md absolute top-3 right-3">Weekly</p>
-                                    {% endif %}
-                                    {% if notif.schedule_type == "MO" %}
-                                        <p>{{ notif.day_of_month }}</p>
-                                        <p class="badge badge-accent badge-md absolute top-3 right-3">Monthly</p>
-                                    {% endif %}
-                                    {% if notif.schedule_type == "EX" %}
-                                        <p>{{ notif.exact_datetime }}</p>
-                                        <p class="badge badge-info badge-md absolute top-3 right-3">Exact Date</p>
-                                    {% endif %}
-                                    <div class="card-actions w-full grid grid-cols-2">
-                                        <a href="{% url "edit-notification" notif.id %}"
-                                           class="btn btn-secondary">Edit</a>
-                                        <a href="{% url "delete-notification" notif.id %}" class="btn btn-error">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </section>
-            {% endif %}
+                <div class="px-8" id="qrcode">
+                    {% if status == "CONNECTED" %}
+                        {# <form action=" {% url "disconnect" %}"> #}
+                        {# {% csrf_token %} #}
+                        <button type="submit" class="btn btn-error">Disconnect WhatsApp</button>
+                        {# </form> #}
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
+
+    {% if status == "CONNECTED" %}
+        <section class="w-full space-y-4">
+            <div class="flex justify-between items-center">
+                <h2>Notifications</h2>
+                <a href="{% url "create-notification" %}" class="btn btn-primary">Create New Notification</a>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+                {% for notif in notifications %}
+                    <div class="card card-sm w-full border-2 border-primary ">
+                        <div class="relative card-body">
+                            <h2 class="card-title">{{ notif.title }}</h2>
+                            <p>{{ notif.description }}</p>
+                            {% if notif.schedule_type == "DA" %}
+                                <p>{{ notif.time }}</p>
+                                <p class="badge badge-primary badge-md absolute top-3 right-3">Daily</p>
+                            {% endif %}
+                            {% if notif.schedule_type == "WE" %}
+                                <p>{{ notif.day_of_week }}</p>
+                                <p class="badge badge-secondary badge-md absolute top-3 right-3">Weekly</p>
+                            {% endif %}
+                            {% if notif.schedule_type == "MO" %}
+                                <p>{{ notif.day_of_month }}</p>
+                                <p class="badge badge-accent badge-md absolute top-3 right-3">Monthly</p>
+                            {% endif %}
+                            {% if notif.schedule_type == "EX" %}
+                                <p>{{ notif.exact_datetime }}</p>
+                                <p class="badge badge-info badge-md absolute top-3 right-3">Exact Date</p>
+                            {% endif %}
+                            <div class="card-actions w-full grid grid-cols-2">
+                                <a href="{% url "edit-notification" notif.id %}"
+                                   class="btn btn-secondary">Edit</a>
+                                <a href="{% url "delete-notification" notif.id %}" class="btn btn-error">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
     {% if qr and status == "SCAN_QR_CODE" %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"
                 integrity="sha512-is1ls2rgwpFZyixqKFEExPHVUUL+pPkBEPw47s/6NDQ4n1m6T/ySeDW3p54jp45z2EJ0RSOgilqee1WhtelXfA=="

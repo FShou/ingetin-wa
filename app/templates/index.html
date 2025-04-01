@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    <main>
+        <nav class="sticky z-[9999] shadow-xl flex justify-between px-4 py-2 items-center top-0 inset-x-0 bg-primary text-primary-content">
+            <div class="text-xl font-semibold">IngetinWA</div>
+            <div class="">
+                <a href="{% url "login" %}" class="btn btn-secondary">Log in</a>
+            </div>
+        </nav>
+        <section class="bg-base-200 py-20">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl font-bold mb-4">Schedule WhatsApp Messages Effortlessly</h1>
+                <p class="text-lg mb-8">
+                    Never miss an important message again! Schedule your WhatsApp messages in advance and let us handle the rest.
+                </p>
+                <a href="{% url 'login' %}" class="btn btn-primary text-white">Get Started</a>
+            </div>
+        </section>
+        <section class="py-20">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-accent p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Easy Scheduling</h3>
+                        <p>Set the date and time for your messages to be sent automatically.</p>
+                    </div>
+                    <div class="bg-accent p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Customizable Messages</h3>
+                        <p>Personalize your messages to suit your needs and audience.</p>
+                    </div>
+                    <div class="bg-accent p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Reminders</h3>
+                        <p>Receive reminders for your scheduled messages to ensure you stay on track.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-base-300 py-20">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Join Us Today!</h2>
+                <p class="text-lg mb-8">Sign up now to start scheduling your WhatsApp messages and enhance your communication.</p>
+                <a href="{% url 'login' %}" class="btn btn-primary text-white">Log In</a>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

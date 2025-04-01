@@ -20,10 +20,7 @@
             <nav class="sticky z-[9999] shadow-xl flex justify-between px-4 py-2 items-center top-0 inset-x-0 bg-primary text-primary-content">
                 <div class="text-xl font-semibold">IngetinWA</div>
                 <div class="">
-                    <form method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-error">Log Out</button>
-                    </form>
+                        <a href="{% url "logout" %}" class="btn btn-error">Log Out</a>
                 </div>
             </nav>
             <div class="w-screen flex flex-col items-center px-60 space-y-8">

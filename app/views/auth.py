@@ -1,6 +1,6 @@
 from django.views import View
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 class LoginView(View):
@@ -22,3 +22,6 @@ class LoginView(View):
         messages.error(request, "Invalid Credential")
         return render(request, "auth/login.html")
 
+def logout_view(request):
+    logout(request)
+    return redirect(to="dashboard")

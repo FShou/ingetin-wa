@@ -15,6 +15,6 @@ def disconnect():
 
 def get_qr_code():
     response = requests.get(url=f"{WAHA_BASE_URL}/api/default/auth/qr?format=raw")
-    base64_string = response.json().get("value")
-    return base64_string
+    raw_qr = response.json().get("value")
+    return raw_qr
 
