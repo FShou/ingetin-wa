@@ -49,33 +49,34 @@
                 <section class="w-full space-y-4">
                     <div class="flex justify-between items-center">
                         <h2>Notifications</h2>
-                        <a href="{% url "notification" %}" class="btn btn-primary">Create New Notification</a>
+                        <a href="{% url "create-notification" %}" class="btn btn-primary">Create New Notification</a>
                     </div>
                     <div class="grid grid-cols-3 gap-2">
                         {% for notif in notifications %}
                             <div class="card card-sm w-full border-2 border-primary ">
-                                <div class="card-body">
+                                <div class="relative card-body">
                                     <h2 class="card-title">{{ notif.title }}</h2>
                                     <p>{{ notif.description }}</p>
                                     {% if notif.schedule_type == "DA" %}
-                                        <p>Daily</p>
                                         <p>{{ notif.time }}</p>
+                                        <p class="badge badge-primary badge-md absolute top-3 right-3">Daily</p>
                                     {% endif %}
                                     {% if notif.schedule_type == "WE" %}
-                                        <p>Weekly</p>
                                         <p>{{ notif.day_of_week }}</p>
+                                        <p class="badge badge-secondary badge-md absolute top-3 right-3">Weekly</p>
                                     {% endif %}
                                     {% if notif.schedule_type == "MO" %}
-                                        <p>Monthly</p>
                                         <p>{{ notif.day_of_month }}</p>
+                                        <p class="badge badge-accent badge-md absolute top-3 right-3">Monthly</p>
                                     {% endif %}
                                     {% if notif.schedule_type == "EX" %}
-                                        <p>Exact Date</p>
                                         <p>{{ notif.exact_datetime }}</p>
+                                        <p class="badge badge-info badge-md absolute top-3 right-3">Exact Date</p>
                                     {% endif %}
                                     <div class="card-actions w-full grid grid-cols-2">
-                                        <a href="" class="btn btn-secondary">Edit</a>
-                                        <a href="" class="btn btn-error">Delete</a>
+                                        <a href="{% url "edit-notification" notif.id %}"
+                                           class="btn btn-secondary">Edit</a>
+                                        <a href="{% url "delete-notification" notif.id %}" class="btn btn-error">Delete</a>
                                     </div>
                                 </div>
                             </div>
