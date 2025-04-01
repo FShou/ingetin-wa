@@ -10,8 +10,8 @@ class ScheduleType(models.TextChoices):
 
 
 class Notifications(BaseModel):
-    title = models.CharField(max_length=100,null=True,blank=True)
-    description = models.CharField(max_length=255,null=True,blank=True)
+    title = models.CharField(max_length=100, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
     recepiant = models.CharField(max_length=13)
     message = models.TextField(blank=True)
     schedule_type = models.CharField(
@@ -23,3 +23,7 @@ class Notifications(BaseModel):
     day_of_week = models.IntegerField(null=True, blank=True)
     day_of_month = models.IntegerField(null=True, blank=True)
     exact_datetime = models.DateTimeField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
