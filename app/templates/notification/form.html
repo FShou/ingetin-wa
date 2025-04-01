@@ -1,0 +1,68 @@
+<form method="post" class=" p-6 rounded-lg shadow-md">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mb-4">
+        <label for="{{ form.title.id_for_label }}" class="label">
+            <span class="label-text">Title:</span>
+        </label>
+        {{ form.title }}
+        {{ form.title.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.description.id_for_label }}" class="label">
+            <span class="label-text">Description:</span>
+        </label>
+        {{ form.description }}
+        {{ form.description.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.recepiant.id_for_label }}" class="label">
+            <span class="label-text">Recipient:</span>
+        </label>
+        {{ form.recepiant }}
+        {{ form.recepiant.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.message.id_for_label }}" class="label">
+            <span class="label-text">Message:</span>
+        </label>
+        {{ form.message }}
+        {{ form.message.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.schedule_type.id_for_label }}" class="label">
+            <span class="label-text">Schedule Type:</span>
+        </label>
+        {{ form.schedule_type }}
+        {{ form.schedule_type.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.time.id_for_label }}" class="label">
+            <span class="label-text">Time:</span>
+        </label>
+        {{ form.time }}
+        {{ form.time.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.day_of_week.id_for_label }}" class="label">
+            <span class="label-text">Day of Week:</span>
+        </label>
+        {{ form.day_of_week }}
+        {{ form.day_of_week.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.day_of_month.id_for_label }}" class="label">
+            <span class="label-text">Day of Month:</span>
+        </label>
+        {{ form.day_of_month }}
+        {{ form.day_of_month.errors }}
+    </div>
+    <div class="mb-4">
+        <label for="{{ form.exact_datetime.id_for_label }}" class="label">
+            <span class="label-text">Exact Date & Time:</span>
+        </label>
+        {{ form.exact_datetime }}
+        {{ form.exact_datetime.errors }}
+    </div>
+    <button type="submit" class="btn btn-primary w-full">Submit</button>
+</form>
