@@ -5,7 +5,8 @@ from django.contrib import messages
 
 class LoginView(View):
     def get(self,request):
-        if request.user:
+        if request.user.is_authenticated:
+            print(request.user)
             return redirect("dashboard")
         return render(request,"auth/login.html")
 
