@@ -22,7 +22,7 @@
                             Waiting...
                         </span>
                     {% endif %}
-                    {% if status == "CONNECTED" %}
+                    {% if status == "WORKING" %}
                         <span class="space-x-2">
                             <span class="inline-grid *:[grid-area:1/1]">
                                 <span class="status status-success"></span>
@@ -32,7 +32,7 @@
                     {% endif %}
                 </div>
                 <div class="px-8" id="qrcode">
-                    {% if status == "CONNECTED" %}
+                    {% if status == "WORKING" %}
                         {# <form action=" {% url "disconnect" %}"> #}
                         {# {% csrf_token %} #}
                         <button type="submit" class="btn btn-error">Disconnect WhatsApp</button>
@@ -43,7 +43,7 @@
         </div>
     </section>
 
-    {% if status == "CONNECTED" %}
+    {% if status == "WORKING" %}
         <section class="w-full space-y-4">
             <div class="flex justify-between items-center">
                 <h2>Notifications</h2>
