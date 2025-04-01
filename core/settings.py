@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'apps.notifications',
-    'apps.connections'
+    'apps.connections',
+    'huey.contrib.djhuey'
 ]
 
 MIDDLEWARE = [

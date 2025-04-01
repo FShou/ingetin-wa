@@ -25,6 +25,14 @@
                                     Scan QR To Connect your WhatsApp (Refresh to see changes)
                                 </span>
                             {% endif %}
+                            {% if status == "STARTING" %}
+                                <span class="space-x-2">
+                                    <span class="inline-grid *:[grid-area:1/1]">
+                                        <span class="status status-warning"></span>
+                                    </span>
+                                    Waiting...
+                                </span>
+                            {% endif %}
                             {% if status == "CONNECTED" %}
                                 <span class="space-x-2">
                                     <span class="inline-grid *:[grid-area:1/1]">

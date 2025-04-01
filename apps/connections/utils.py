@@ -6,7 +6,7 @@ def check_status():
     response = requests.get(url=f"{WAHA_BASE_URL}/api/sessions/default")
     print(response)
     if response.status_code == 200:
-        status = response.json().get("status") # STOPPED, SCAN_QR, CONNECTED
+        status = response.json().get("status") # STOPPED,STARTING, SCAN_QR, CONNECTED
         return status
     return "NOT_READY" 
 
