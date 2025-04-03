@@ -3,10 +3,14 @@ services:
     image: redis
     ports:
       - "6379:6379"
-  waha:
+  walalwe:
     image: devlikeapro/waha
     ports:
       - "3001:3000"
+    environment:
+      WHATSAPP_DEFAULT_ENGINE: GOWS
+      WAHA_AUTO_START_DELAY_SECONDS: 1
+      TZ: Asia/Jakarta
   postgres:
     image: "postgres"
     ports:

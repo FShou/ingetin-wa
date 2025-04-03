@@ -9,7 +9,7 @@ def send_wa_task(notification):
     send_wa(notification)
 
 
-@db_periodic_task(crontab(hour="1"))
+@db_periodic_task(crontab(hour="23"))
 def schedule_tomorrow_notifications_tasks():
     notifications = get_tomorrow_notifications()
     tomorrow = datetime.now() + timedelta(days=1)  # Get tomorrow's date
