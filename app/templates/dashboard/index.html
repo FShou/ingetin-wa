@@ -33,10 +33,7 @@
                 </div>
                 <div class="px-8" id="qrcode">
                     {% if status == "WORKING" %}
-                        {# <form action=" {% url "disconnect" %}"> #}
-                        {# {% csrf_token %} #}
-                        <button type="submit" class="btn btn-error">Disconnect WhatsApp</button>
-                        {# </form> #}
+                        <a  href="{% url "disconnect" %}" class="btn btn-error">Disconnect WhatsApp</a>
                     {% endif %}
                 </div>
             </div>

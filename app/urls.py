@@ -1,5 +1,6 @@
 from django.urls import path
 
+from app.views.connection import disconnect_view
 from app.views.landing import landingpage_view
 
 from .views.notification import (
@@ -30,4 +31,5 @@ urlpatterns = [
         delete_notification_view,
         name="delete-notification",
     ),
+    path("connection/disconnect",disconnect_view,name="disconnect")
 ]
