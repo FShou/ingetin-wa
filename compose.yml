@@ -3,7 +3,7 @@ services:
     image: redis
     ports:
       - "6379:6379"
-  walalwe:
+  waha:
     image: devlikeapro/waha
     ports:
       - "3001:3000"
